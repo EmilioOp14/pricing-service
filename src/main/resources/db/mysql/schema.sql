@@ -31,7 +31,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pricingdb`.`prices` (
   `id_price` INT NOT NULL AUTO_INCREMENT,
-  `coins_quantity` INT NOT NULL,
+  `coins_amount` INT NOT NULL,
   `price` FLOAT NOT NULL,
   `method_id` INT NOT NULL,
   PRIMARY KEY (`id_price`),
@@ -50,13 +50,14 @@ CREATE TABLE IF NOT EXISTS `pricingdb`.`discounts` (
   `id_discount` INT NOT NULL AUTO_INCREMENT,
   `start_date` DATETIME NULL DEFAULT NULL,
   `end_date` DATETIME NULL DEFAULT NULL,
-  `porcentaje_descuento` FLOAT NOT NULL,
+  `discount_percentaje` FLOAT NOT NULL,
   `price_id` INT NOT NULL,
   PRIMARY KEY (`id_discount`),
   INDEX `price_id_idx` (`price_id` ASC) VISIBLE,
   CONSTRAINT `price_id`
     FOREIGN KEY (`price_id`)
-    REFERENCES `pricingdb`.`prices` (`id_price`))
+    REFERENCES `pricingdb`.`prices` (`id_price`)
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
