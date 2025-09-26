@@ -4,20 +4,20 @@ package org.vedruna.pricing.domain.model;
 public class Price {
 
     private final Integer id;
-    private final Integer amount;
+    private final Integer coinsAmount;
     private final Float price;
     private final PaymentMethod paymentMethod;
 
-        public Price(Integer id, Integer amount, Float price, PaymentMethod paymentMethod) {
+        public Price(Integer id, Integer coinsAmount, Float price, PaymentMethod paymentMethod) {
         this.id = id;
-        this.amount = amount;
+        this.coinsAmount = coinsAmount;
         this.price = price;
         this.paymentMethod = paymentMethod;
     }
 
     // Getters
     public Integer getId() { return id; }
-    public Integer getAmount() { return amount; }
+    public Integer getCoinsAmount() { return coinsAmount; }
     public Float getPrice(){ return price; }
     public PaymentMethod getPaymentMethod() { return paymentMethod; }
 
