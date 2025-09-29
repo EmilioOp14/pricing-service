@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.vedruna.pricing.domain.model.Discount;
 import org.vedruna.pricing.infrastructure.out.jpa.entity.DiscountEntity;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PriceEntityMapper.class})
 public interface DiscountEntityMapper {
 
     // Entity -> Domain

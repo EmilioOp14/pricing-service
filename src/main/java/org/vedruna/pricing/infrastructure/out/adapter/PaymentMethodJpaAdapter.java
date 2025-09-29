@@ -1,6 +1,9 @@
 package org.vedruna.pricing.infrastructure.out.adapter;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.vedruna.pricing.application.port.out.PaymentMethodRepositoryPort;
 import org.vedruna.pricing.domain.model.PaymentMethod;
@@ -18,10 +21,9 @@ public class PaymentMethodJpaAdapter implements PaymentMethodRepositoryPort {
     private final PaymentMethodEntityMapper mapper;
 
     @Override
-    public List<PaymentMethod> findAll() {
-        return repository.findAll().stream()
-                .map(mapper::toDomain)
-                .toList();
+    public Page<PaymentMethod> findAll(Pageable pageable) {
+    return repository.findAll(pageable)
+                     .map(mapper::toDomain);
     }
 
     @Override
