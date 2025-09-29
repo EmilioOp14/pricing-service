@@ -13,6 +13,8 @@ import org.vedruna.pricing.domain.model.PaymentMethod;
 import org.vedruna.pricing.infrastructure.in.rest.dto.PaymentMethodDto;
 import org.vedruna.pricing.infrastructure.in.rest.mapper.PaymentMethodDtoMapper;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -22,11 +24,13 @@ public class PaymentMethodController {
     private final GetPaymentMethodByIdUseCase getPaymentMethodByIdUseCase;
     private final PaymentMethodDtoMapper paymentMethodDtoMapper;
 
+    @Operation(summary = "Get all payment methods", description = "Returns paginated list of payment methods")
     @GetMapping("/payment-methods")
     public Page<PaymentMethodDto> getAll(Pageable pageable) {
         return getAllPaymentMethodsUseCase.getAllPaymentMethods(pageable).map(paymentMethodDtoMapper::toDto);
     }
 
+    @Operation(summary = "Get payment method by id", description = "Returns a payment method by id")
     @GetMapping("/payment-methods/{id}")
 public PaymentMethod getById(@PathVariable Integer id) {
     return getPaymentMethodByIdUseCase.getPaymentMethodById(id);

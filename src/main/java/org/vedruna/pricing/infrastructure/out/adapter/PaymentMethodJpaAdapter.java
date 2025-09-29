@@ -11,7 +11,6 @@ import org.vedruna.pricing.domain.model.PaymentMethod;
 import org.vedruna.pricing.infrastructure.out.jpa.mapper.PaymentMethodEntityMapper;
 import org.vedruna.pricing.infrastructure.out.jpa.repository.PaymentMethodRepository;
 
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor

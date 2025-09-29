@@ -2,10 +2,10 @@ package org.vedruna.pricing.infrastructure.in.rest;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.vedruna.pricing.application.port.in.GetAllDiscountsUseCase;
-import org.vedruna.pricing.domain.model.Discount;
 import org.vedruna.pricing.infrastructure.in.rest.dto.DiscountDto;
 import org.vedruna.pricing.infrastructure.in.rest.mapper.DiscountDtoMapper;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 
@@ -21,6 +21,7 @@ public class DiscountController {
     private final GetAllDiscountsUseCase getAllDiscountsUseCase;
     private final DiscountDtoMapper discountDtoMapper;
 
+    @Operation(summary = "Get all discounts", description = "Returns paginated list of discounts")
     @GetMapping("/discounts")
 public Page<DiscountDto> getAll(Pageable pageable) {
     return getAllDiscountsUseCase.getAllDiscounts(pageable)
