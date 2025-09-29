@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class GetAllDiscountsMethodsService implements GetAllDiscountsUseCase {
+public class GetAllDiscountsService implements GetAllDiscountsUseCase {
 
     private final DiscountRepositoryPort repositoryPort;
 

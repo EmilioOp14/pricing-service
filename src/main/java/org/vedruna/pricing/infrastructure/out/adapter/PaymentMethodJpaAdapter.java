@@ -6,11 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.vedruna.pricing.application.port.out.PaymentMethodRepositoryPort;
+import org.vedruna.pricing.domain.exception.PaymentMethodNotFoundException;
 import org.vedruna.pricing.domain.model.PaymentMethod;
 import org.vedruna.pricing.infrastructure.out.jpa.mapper.PaymentMethodEntityMapper;
 import org.vedruna.pricing.infrastructure.out.jpa.repository.PaymentMethodRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -27,7 +27,9 @@ public class PaymentMethodJpaAdapter implements PaymentMethodRepositoryPort {
     }
 
     @Override
-    public Optional<PaymentMethod> findById(Integer id) {
-        return repository.findById(id).map(mapper::toDomain);
+    public PaymentMethod findById(Integer id) {
+         return repository.findById(id)
+                .map(mapper::toDomain)
+                .orElseThrow(() -> new PaymentMethodNotFoundException(id));
     }
 }
