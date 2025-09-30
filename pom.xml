@@ -77,7 +77,6 @@
         </dependency>
 
         <!-- SWAGGER / OpenAPI -->
-         <!-- TODO Personalizar la documentacion Swagger y open api -->
          <dependency>
     <groupId>org.springdoc</groupId>
     <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
