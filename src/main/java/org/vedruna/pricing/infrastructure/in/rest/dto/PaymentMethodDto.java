@@ -1,13 +1,12 @@
 package org.vedruna.pricing.infrastructure.in.rest.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class PaymentMethodDto {
-    private Integer id;
-    private String methodName;
-}
+public record PaymentMethodDto(
+        @NotNull(message = "El id no puede ser nulo")
+        Integer id,
+
+        @NotBlank(message = "El nombre del método de pago es obligatorio")
+        String methodName
+) {}

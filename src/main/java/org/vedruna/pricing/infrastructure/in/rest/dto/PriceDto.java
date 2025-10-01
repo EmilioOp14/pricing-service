@@ -1,15 +1,20 @@
 package org.vedruna.pricing.infrastructure.in.rest.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class PriceDto {
-    private Integer id;
-    private Integer coinsAmount;
-    private Float price;
-    private PaymentMethodDto paymentMethod;
-}
+public record PriceDto(
+        @NotNull(message = "El id no puede ser nulo")
+        Integer id,
+
+        @NotNull(message = "La cantidad de monedas no puede ser nula")
+        @Positive(message = "La cantidad de monedas debe ser positiva")
+        Integer coinsAmount,
+
+        @NotNull(message = "El precio no puede ser nulo")
+        @Positive(message = "El precio debe ser positivo")
+        Float price,
+
+        @NotNull(message = "El método de pago es obligatorio")
+        PaymentMethodDto paymentMethod
+) {}
