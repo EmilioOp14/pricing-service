@@ -1,0 +1,24 @@
+package org.vedruna.pricing.infrastructure.adapters.in.dto;
+
+import org.vedruna.pricing.domain.model.PaymentMethod;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import lombok.Data;
+
+@Data
+public class PriceDto {
+        @NotNull(message = "El id no puede ser nulo")
+        Integer id;
+
+        @NotNull(message = "La cantidad de monedas no puede ser nula")
+        @Positive(message = "La cantidad de monedas debe ser positiva")
+        Integer coinsAmount;
+
+        @NotNull(message = "El precio no puede ser nulo")
+        @Positive(message = "El precio debe ser positivo")
+        Float price;
+
+        @NotNull(message = "El método de pago es obligatorio")
+        PaymentMethod paymentMethod;
+}
