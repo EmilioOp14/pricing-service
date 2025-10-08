@@ -9,7 +9,9 @@ import org.vedruna.pricing.infrastructure.adapters.out.converter.OutBoundConvert
 import org.vedruna.pricing.infrastructure.adapters.out.persistance.repository.PriceRepository;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 @AllArgsConstructor
 public class JpaRepositoryImpl implements PriceJpaRepository{
@@ -19,14 +21,21 @@ public class JpaRepositoryImpl implements PriceJpaRepository{
 
     @Override
     public Page<Price> getAllPrices(Pageable pageable) {
-        return repository.findAll(pageable)
-                .map(converter::toDomain);
+        log.debug("Checking all prices in database (page={}, size={}, sort={})", pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+        Page<Price> prices = repository.findAll(pageable).map(converter::toDomain);
+        log.info("Database returned {} prices", prices.getTotalElements());
+        return prices;
     }
 
     @Override
     public Price getAPriceById(Integer id) {
-        return converter.toDomain(repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Price with id " + id + " not found")));
+        log.debug("Checking price with id {} in database", id);
+        return repository.findById(id)
+                .map(converter::toDomain)
+                .orElseThrow(() -> {
+                    log.error("Price with id {} not found", id);
+                    return new RuntimeException("Price with id " + id + " not found");
+                });
     }
 
 }

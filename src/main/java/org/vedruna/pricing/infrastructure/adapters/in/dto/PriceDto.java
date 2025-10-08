@@ -4,9 +4,13 @@ import org.vedruna.pricing.domain.model.PaymentMethod;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PriceDto {
         @NotNull(message = "El id no puede ser nulo")
         Integer id;
