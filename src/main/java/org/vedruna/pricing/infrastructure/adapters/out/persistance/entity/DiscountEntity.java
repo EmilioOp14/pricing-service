@@ -16,14 +16,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter 
-@Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "discounts")
 public class DiscountEntity {
@@ -39,7 +38,7 @@ public class DiscountEntity {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
-    @Column(name = "discount_percentaje")
+    @Column(name = "discount_percentage")
     private Float discount;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

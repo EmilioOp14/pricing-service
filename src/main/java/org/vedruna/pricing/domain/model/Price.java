@@ -15,4 +15,14 @@ public class Price {
     Float price;
     PaymentMethod paymentMethod;
 
+    Discount discount;
+    Float finalPrice;
+
+    public Float getFinalPrice() {
+    if (discount != null && discount.getPercentage() != null) {
+        return price * (1 - discount.getPercentage() / 100);
+    }
+    return price;
+}
+
 }

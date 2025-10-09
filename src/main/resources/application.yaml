@@ -5,10 +5,10 @@ spring:
 
   #DB Config
   datasource:
-    url: ${db:jdbc:mysql://localhost:3306/pricingdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC}
+    url: jdbc:mysql://localhost:3306/pricingdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     #${db:jdbc:postgresql://192.168.1.170:5432/watchlist_su2u?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory}
-    username: ${user:root}
-    password: ${pass:root}
+    username: root
+    password: root
 
   jpa:
     hibernate:
@@ -29,5 +29,5 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: health,info,prometheus
   

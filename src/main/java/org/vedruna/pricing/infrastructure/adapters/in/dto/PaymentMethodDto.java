@@ -6,9 +6,9 @@ import lombok.Data;
 
 @Data
 public class PaymentMethodDto {
-        @NotNull(message = "El id no puede ser nulo")
+        @NotNull(message = "Id cannot be null")
         Integer id;
 
-        @NotBlank(message = "El nombre del método de pago es obligatorio")
+        @NotBlank(message = "Payment method name is required")
         String methodName;
 }

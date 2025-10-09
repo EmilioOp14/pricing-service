@@ -12,17 +12,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PriceDto {
-        @NotNull(message = "El id no puede ser nulo")
+        @NotNull(message = "Id cannot be null")
         Integer id;
 
-        @NotNull(message = "La cantidad de monedas no puede ser nula")
-        @Positive(message = "La cantidad de monedas debe ser positiva")
+        @NotNull(message = "Coin amount cannot be null")
+        @Positive(message = "Coin amount must be positive")
         Integer coinsAmount;
 
-        @NotNull(message = "El precio no puede ser nulo")
-        @Positive(message = "El precio debe ser positivo")
+        @NotNull(message = "Price cannot be null")
+        @Positive(message = "Price must be positive")
         Float price;
 
-        @NotNull(message = "El método de pago es obligatorio")
+        @NotNull(message = "Payment method is required")
         PaymentMethod paymentMethod;
+
+        Float discountPercentage;
+        Float finalPrice;   
 }

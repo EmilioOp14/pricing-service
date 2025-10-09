@@ -48,9 +48,9 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pricingdb`.`discounts` (
   `id_discount` INT NOT NULL AUTO_INCREMENT,
-  `start_date` DATETIME NULL DEFAULT NULL,
-  `end_date` DATETIME NULL DEFAULT NULL,
-  `discount_percentaje` FLOAT NOT NULL,
+  `start_date` DATETIME(6) NULL NOT NULL,
+  `end_date` DATETIME(6) NULL NOT NULL,
+  `discount_percentage` FLOAT NOT NULL,
   `price_id` INT NOT NULL,
   PRIMARY KEY (`id_discount`),
   INDEX `price_id_idx` (`price_id` ASC) VISIBLE,
